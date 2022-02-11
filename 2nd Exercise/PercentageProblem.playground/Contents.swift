@@ -1,6 +1,6 @@
 import UIKit
 
-func solve(amount: [Double]) -> [Int]
+func solve(_ amount: [Double]) -> [Int]
 {
     // Add all amount
     let total = amount.reduce(0, +)
@@ -16,7 +16,7 @@ func solve(amount: [Double]) -> [Int]
         diff.append(eachStockPercentage - eachStockPercentageWithoutRound)
         percent.append(Int(eachStockPercentage))
     }
-    print(percent)
+    //    print(percent)
     // Add calculated RoundOff percentage of each stock
     let stockTotalPer = percent.reduce(0, +)
     
@@ -28,6 +28,7 @@ func solve(amount: [Double]) -> [Int]
     {
         var idx = -1
         var value: Double = Double(Int.max)
+        
         for (index, element) in diff.enumerated()
         {
             if element > 0
@@ -39,12 +40,14 @@ func solve(amount: [Double]) -> [Int]
                 }
             }
         }
+        
         percent[idx]-=1
         return percent
     }
     else {
         var idx = -1
         var value: Double = Double(Int.min)
+        
         for (index, element) in diff.enumerated()
         {
             if element < 0
@@ -56,6 +59,7 @@ func solve(amount: [Double]) -> [Int]
                 }
             }
         }
+        
         percent[idx]+=1
         return percent
     }
@@ -63,5 +67,5 @@ func solve(amount: [Double]) -> [Int]
 }
 let amount: [Double] = [50, 70, 120, 110]
 
-let percentage: [Int] = solve(amount: amount)
-print(percentage)
+let percentage: [Int] = solve(amount)
+print("Each Stock percentage assigned: \(percentage)")
